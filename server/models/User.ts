@@ -6,6 +6,7 @@ interface IUser extends Document {
     username: string;
     email: string;
     password: string;
+    starredPosts: Types.ObjectId[];
     createdAt: Date;
     updatedAt: Date;
 }
@@ -25,6 +26,12 @@ const userSchema: Schema = new Schema(
             required: true,
             unique: true
         },
+        starredPosts: [
+            {
+                type: Types.ObjectId,
+                ref: 'Post'
+            }
+        ],
         password: {
             type: String,
             required: true

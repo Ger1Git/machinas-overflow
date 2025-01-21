@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
+import { useRuntimeConfig } from '#imports';
 
 const connectMongoDB = async () => {
-    const mongoURI = process.env.MONGO_URI;
+    const config = useRuntimeConfig();
+    const mongoURI = config.private.mongoUri;
 
     if (!mongoURI) {
         throw new Error('Mongo URI is not defined');

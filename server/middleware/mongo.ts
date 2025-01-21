@@ -1,5 +1,6 @@
-import connectMongoDB from "../db/connectMongo";
+import { defineEventHandler } from 'h3';
+import connectMongoDB from '~/server/db/connectMongo';
 
-export default defineNitroPlugin(() => {
-  connectMongoDB();
+export default defineEventHandler(async () => {
+    await connectMongoDB();
 });

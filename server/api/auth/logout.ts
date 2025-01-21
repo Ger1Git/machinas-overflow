@@ -1,6 +1,9 @@
-import { defineEventHandler, setCookie } from 'h3';
+import { defineEventHandler, setCookie, setResponseStatus } from 'h3';
+import auth from '../../middleware/auth';
 
 export default defineEventHandler(async (event) => {
+    await auth(event);
+
     try {
         setCookie(event, 'jwt', '', { maxAge: 0 });
         return { message: 'Logged out successfully' };

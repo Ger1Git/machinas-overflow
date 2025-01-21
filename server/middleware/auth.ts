@@ -1,6 +1,6 @@
 import { defineEventHandler, getCookie, setResponseStatus } from 'h3';
 import jwt from 'jsonwebtoken';
-import { User, IUser } from '../models/User';
+import { User } from '../models/User';
 
 interface DecodedToken extends jwt.JwtPayload {
     userId: string;

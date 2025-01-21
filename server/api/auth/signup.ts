@@ -1,7 +1,7 @@
 import { defineEventHandler, readBody, setResponseStatus } from 'h3';
 import bcrypt from 'bcryptjs';
-import { User } from '../models/User';
-import generateTokenAndSetCookie from '../utils/generateToken';
+import { User } from '../../models/User';
+import generateTokenAndSetCookie from '../../utils/generateToken';
 
 export default defineEventHandler(async (event) => {
     try {
