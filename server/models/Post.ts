@@ -1,0 +1,55 @@
+import mongoose, { Document, Schema } from 'mongoose';
+
+interface IPost extends Document {
+    title: string;
+    content: string;
+    user: mongoose.Schema.Types.ObjectId;
+    category: string;
+    comments: mongoose.Schema.Types.ObjectId[];
+    tags: string[];
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+const postSchema: Schema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ],
+    tags: [
+        {
+            type: String
+        }
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+const Post = mongoose.model<IPost>('Post', postSchema);
+
+export default Post;
