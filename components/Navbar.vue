@@ -16,7 +16,7 @@
             </router-link>
         </div>
 
-        <ul v-if="isAuthenticated" class="flex space-x-4">
+        <ul class="flex space-x-4">
             <li>
                 <router-link
                     to="/notifications"
@@ -53,10 +53,3 @@
         </ul>
     </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-
-// Simulate authentication state
-const isAuthenticated = ref(true);
-</script>

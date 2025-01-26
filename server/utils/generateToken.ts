@@ -14,7 +14,7 @@ const generateTokenAndSetCookie = (
         }
     );
 
-    setCookie(event, 'jwt', token, {
+    setCookie(event, 'authToken', token, {
         maxAge: 10 * 24 * 60 * 60, // 10 days
         httpOnly: true,
         secure: process.env.NODE_ENV !== 'development',

@@ -31,5 +31,6 @@ export default defineNuxtConfig({
                 { rel: 'icon', type: 'image/svg+xml', href: '/machinas.svg' }
             ]
         }
-    }
+    },
+    plugins: ['~/plugins/vue-query.ts']
 });
