@@ -6,7 +6,24 @@ interface DecodedToken extends jwt.JwtPayload {
     userId: string;
 }
 
+const protectedRoutes = [
+    '/api/users',
+    '/api/posts',
+    '/api/auth/logout',
+    '/api/comments'
+];
+
 export default defineEventHandler(async (event) => {
+    const currentRoute = event.node.req.url;
+
+    const isProtected = protectedRoutes.some((route) =>
+        currentRoute?.startsWith(route)
+    );
+
+    if (!isProtected) {
+        return;
+    }
+
     try {
         const token = getCookie(event, 'jwt');
 

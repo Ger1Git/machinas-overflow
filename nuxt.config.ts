@@ -10,5 +10,26 @@ export default defineNuxtConfig({
     },
     nitro: {
         plugins: ['~/server/middleware/mongo.ts']
+    },
+    css: ['~/assets/css/tailwind.css'],
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {}
+        }
+    },
+    app: {
+        head: {
+            title: 'Machinas Overflow',
+            meta: [
+                {
+                    name: 'description',
+                    content: 'Website for Salesforce questions'
+                }
+            ],
+            link: [
+                { rel: 'icon', type: 'image/svg+xml', href: '/machinas.svg' }
+            ]
+        }
     }
 });
